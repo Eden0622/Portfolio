@@ -1,0 +1,17 @@
+<Context path="/web" docBase="www">
+<Resource 
+	name="jdbc/web"
+	auth="Container"
+	type="javax.sql.DataSource"
+	driverClassName="com.mysql.cj.jdbc.Driver"
+	loginTimeout="10"
+	validationQuery="SELECT 1 FROM DUAL"
+	maxWait="5000"
+	username="user1"
+	password="asd123"
+	testOnBorrow="true"
+	url="jdbc:mysql://13.125.255.60:3306/WEB?serverTimezone=Asia/Seoul"/>
+<ResourceLink type="javax.sql.data.DataSourse" 
+	name="jdbc/WEB" 
+	global="jdbc/Web"/>
+</Context>
