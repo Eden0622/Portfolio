@@ -39,7 +39,7 @@ public class UserRegisterServlet extends HttpServlet {
 			response.sendRedirect("join.jsp");
 			return;
 		}
-		int result = new UserDAO().register(userID, userPW, userPWC, userName, userBirthYear, userBirthMonth, userBirthDate, userEmail, userGender, "");
+		int result = new UserDAO().register(userID, userPW, userName, userBirthYear, userBirthMonth, userBirthDate, userEmail, userGender, "");
 		if(result == 1) {
 			request.getSession().setAttribute("userID", userID);
 			request.getSession().setAttribute("messageType", "성공메시지");

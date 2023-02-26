@@ -86,23 +86,22 @@ public class UserDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
-	public int register(String userID, String userPW, String userPWC, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender, String userProfile ) {
+	public int register(String userID, String userPW, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender, String userProfile ) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			pstmt.setString(2, userPW);
-			pstmt.setString(3, userPWC);
-			pstmt.setString(4, userName);
-			pstmt.setInt(5, Integer.parseInt(userBirthYear));
-			pstmt.setInt(6, Integer.parseInt(userBirthMonth));
-			pstmt.setInt(7, Integer.parseInt(userBirthDate));
-			pstmt.setString(8, userEmail);
-			pstmt.setString(9, userGender);
-			pstmt.setString(10, userProfile);
+			pstmt.setString(3, userName);
+			pstmt.setInt(4, Integer.parseInt(userBirthYear));
+			pstmt.setInt(5, Integer.parseInt(userBirthMonth));
+			pstmt.setInt(6, Integer.parseInt(userBirthDate));
+			pstmt.setString(7, userEmail);
+			pstmt.setString(8, userGender);
+			pstmt.setString(9, userProfile);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -131,7 +130,6 @@ public class UserDAO {
 			if (rs.next()) {
 				user.setUserID(userID);
 				user.setUserPW(rs.getString("userPW"));
-				user.setUserPWC(rs.getString("userPWC"));
 				user.setUserName(rs.getString("userName"));
 				user.setUserBirthYear(rs.getInt("userBirthYear"));
 				user.setUserBirthMonth(rs.getInt("userBirthMonth"));
@@ -155,22 +153,21 @@ public class UserDAO {
 		return user;
 	}
 	
-	public int update(String userID, String userPW, String userPWC, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender) {
+	public int update(String userID, String userPW, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String SQL = "UPDATE user SET userPW = ?, userPWC = ?, userName = ?, userBirthYear = ?, userBirthMonth = ?, userBirthDate = ?, userEmail = ?, userGender = ? WHERE userID = ?";
+		String SQL = "UPDATE user SET userPW = ?, userName = ?, userBirthYear = ?, userBirthMonth = ?, userBirthDate = ?, userEmail = ?, userGender = ? WHERE userID = ?";
 		try {
 			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userPW);
-			pstmt.setString(2, userPWC);
-			pstmt.setString(3, userName);
-			pstmt.setInt(4, Integer.parseInt(userBirthYear));
-			pstmt.setInt(5, Integer.parseInt(userBirthMonth));
-			pstmt.setInt(6, Integer.parseInt(userBirthDate));
-			pstmt.setString(7, userEmail);
-			pstmt.setString(8, userGender);
-			pstmt.setString(9, userID);
+			pstmt.setString(2, userName);
+			pstmt.setInt(3, Integer.parseInt(userBirthYear));
+			pstmt.setInt(4, Integer.parseInt(userBirthMonth));
+			pstmt.setInt(5, Integer.parseInt(userBirthDate));
+			pstmt.setString(6, userEmail);
+			pstmt.setString(7, userGender);
+			pstmt.setString(8, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -47,7 +47,7 @@ public class UserUpdateServlet extends HttpServlet {
 		String userBirthDate = multi.getParameter("userBirthDate");
 		String userEmail = multi.getParameter("userEmail");
 		String userGender = multi.getParameter("userGender");
-		//String userProfile = multi.getParameter("userProfile");
+		String userProfile = multi.getParameter("userProfile");
 		if(userID == null || userID.equals("") || userPW == null || userPW.equals("") || 
 				userPWC == null || userPWC.equals("") || userName == null || userName.equals("") || 
 				userBirthYear == null || userBirthYear.equals("") || userBirthMonth == null || userBirthMonth.equals("") || userBirthDate == null || userBirthDate.equals("") ||
@@ -91,7 +91,7 @@ public class UserUpdateServlet extends HttpServlet {
 			}
 		}
 		new UserDAO().profile(userID, fileName);
-		int result = new UserDAO().update(userID, userPW, userPWC, userName, userBirthYear, userBirthMonth, userBirthDate, userEmail, userGender);
+		int result = new UserDAO().update(userID, userPW, userName, userBirthYear, userBirthMonth, userBirthDate, userEmail, userGender);
 		if(result == 1) {
 			request.getSession().setAttribute("userID", userID);
 			request.getSession().setAttribute("messageType", "성공메시지");

@@ -4,7 +4,6 @@ public class UserDTO {
 	
 	private String userID;
 	private String userPW;
-	private String userPWC;
 	private String userName;
 	private int userBirthYear;
 	private int userBirthMonth;
@@ -24,12 +23,6 @@ public class UserDTO {
 	}
 	public void setUserPW(String userPW) {
 		this.userPW = userPW;
-	}
-	public String getUserPWC() {
-		return userPWC;
-	}
-	public void setUserPWC(String userPWC) {
-		this.userPWC = userPWC;
 	}
 	public String getUserName() {
 		return userName;
