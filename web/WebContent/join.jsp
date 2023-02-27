@@ -209,14 +209,22 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        
         <%
 			String messageContent = null;
 			if(session.getAttribute("messageContent") != null) {
 				messageContent = (String) session.getAttribute("messageContent");
+				System.out.println(messageContent);
 			}
 			String messageType = null;
 			if(session.getAttribute("messageType") != null) {
 				messageType = (String) session.getAttribute("messageType");
+				System.out.println(messageType);
 			}
 			if(messageContent != null) {
         %>
@@ -271,9 +279,5 @@
 				</div>
 			</div>
 		</div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </body>
 </html>

@@ -46,13 +46,13 @@
 				}
 			}
 			
-			function addImg() {
+			<%-- function addImg() {
 				$('#imgProfile').append(
 						'<div class="media" style="border:3px solid red;">' +
 						'<img class="media-object img-circle" style="width: 30px; height: 30px;" src="<%= userProfile %>" alt="">' +
 						'</div>'
 				);
-			}
+			} --%>
 		</script>
     </head>
     <body>
@@ -109,7 +109,6 @@
                                     <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                                 </div>
                                 <div class="form-floating mypage-update">
-                                	<h5><%= user.getUserPWC() %></h5>
                                     <input class="form-control" onkeyup="passwordCheckFunction();" id="userPWC" name="userPWC" type="password" maxlength="20" placeholder="Enter your password confirm..." data-sb-validations="required" />
                                     <label for="userPWC">Password Confirm</label>
                                     <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>

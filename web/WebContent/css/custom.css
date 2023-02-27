@@ -45,17 +45,20 @@
 	height: 100%;
 	width: 100%;
 	pointer-events: none;
+	z-index:1000;
 }
 .vertical-align-center {
 	display: table-cell;
 	vertical-align: middle;
 	pointer-events: none;
+	z-index:1000;
 }
 .modal-content {
 	width: inherit;
 	height: inherit;
 	margin: 0 auto;
 	pointer-events: all;
+	z-index:1000;
 }
 
 /* mypage 디자인 처리 */

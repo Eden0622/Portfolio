@@ -56,7 +56,7 @@ public class UserDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
-	
+	//아이디 중복체크 함수
 	public int registerCheck(String userID) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -86,6 +86,7 @@ public class UserDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
+	//회원가입 함수
 	public int register(String userID, String userPW, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender, String userProfile ) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -115,7 +116,7 @@ public class UserDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
-	
+	//유저 불러오기 함수
 	public UserDTO getUser(String userID) {
 		UserDTO user = new UserDTO();
 		Connection conn = null;
@@ -153,10 +154,11 @@ public class UserDAO {
 		return user;
 	}
 	
-	public int update(String userID, String userPW, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender) {
+	//회원정보수정 함수
+	public int update(String userID, String userPW, String userName, String userBirthYear, String userBirthMonth, String userBirthDate, String userEmail, String userGender, String userProfile) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String SQL = "UPDATE user SET userPW = ?, userName = ?, userBirthYear = ?, userBirthMonth = ?, userBirthDate = ?, userEmail = ?, userGender = ? WHERE userID = ?";
+		String SQL = "UPDATE user SET userPW = ?, userName = ?, userBirthYear = ?, userBirthMonth = ?, userBirthDate = ?, userEmail = ?, userGender = ? , userProfile = ? WHERE userID = ?";
 		try {
 			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(SQL);
@@ -167,7 +169,8 @@ public class UserDAO {
 			pstmt.setInt(5, Integer.parseInt(userBirthDate));
 			pstmt.setString(6, userEmail);
 			pstmt.setString(7, userGender);
-			pstmt.setString(8, userID);
+			pstmt.setString(8, userProfile);
+			pstmt.setString(9, userID);
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -183,6 +186,7 @@ public class UserDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
+	//프로필사진 업데이트 함수
 	public int profile(String userID, String userProfile) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -206,6 +210,7 @@ public class UserDAO {
 		return -1; // 데이터베이스 오류
 	}
 
+	//프로필 사진 불러오기 함수
 	public String getProfile(String userID) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -218,9 +223,9 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if(rs.getString("userProfile").equals("")) {
-					return "http://localhost:18080/web/images/icon.png";
+					return "http://localhost:8080/web/images/icon.png";
 				}
-				return "http://localhost:18080/web/upload" + rs.getString("userProfile");
+				return "http://localhost:8080/web/upload" + rs.getString("userProfile");
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -234,7 +239,7 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return "http://localhost:18080/web/images/icon.png";
+		return "http://localhost:8080/web/images/icon.png";
 	}
 }
 	

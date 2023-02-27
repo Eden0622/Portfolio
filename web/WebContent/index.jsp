@@ -181,10 +181,12 @@
 			String messageContent = null;
 			if (session.getAttribute("messageContent") != null) {
 				messageContent = (String) session.getAttribute("messageContent");
+				System.out.println(messageContent);
 			}
 			String messageType = null;
 			if (session.getAttribute("messageType") != null) {
 				messageType = (String) session.getAttribute("messageType");
+				System.out.println(messageType);
 			}
 			if (messageContent != null) {
 	%>
